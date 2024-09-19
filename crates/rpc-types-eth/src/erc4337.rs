@@ -68,7 +68,7 @@ pub struct UserOperation {
     pub max_priority_fee_per_gas: U256,
     /// Paymaster Contract address and any extra data required for verification and execution
     /// (empty for self-sponsored transaction)
-    pub paymaster_and_data: Bytes,
+    pub paymaster_and_data: Option<Bytes>,
     /// Used to validate a UserOperation along with the nonce during verification
     pub signature: Bytes,
 }
@@ -104,13 +104,13 @@ pub struct PackedUserOperation {
     pub max_priority_fee_per_gas: U256,
     /// Paymaster contract address: Needed if a third party is covering transaction costs; left
     /// blank for self-funded accounts.
-    pub paymaster: Address,
+    pub paymaster: Option<Address>,
     /// The gas limit for the paymaster verification.
     pub paymaster_verification_gas_limit: U256,
     /// The gas limit for the paymaster post-operation.
     pub paymaster_post_op_gas_limit: U256,
     /// The paymaster data.
-    pub paymaster_data: Bytes,
+    pub paymaster_data: Option<Bytes>,
     /// The signature of the transaction.
     pub signature: Bytes,
 }
